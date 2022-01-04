@@ -10,7 +10,7 @@
         android:layout_height="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/iv_person">
 
         <ImageView
             android:id="@+id/p_bot_iv"
@@ -23,7 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/pic_cover_blue_white1" />
+            android:src="@drawable/pic_cover_blue_white" />
 
     </RelativeLayout>
 
@@ -40,5 +40,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_layout" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_person"
+        android:layout_width="21dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_person"
+        app:layout_constraintBottom_toTopOf="@+id/progress_layout"
+        app:layout_constraintStart_toStartOf="@+id/progress_layout"
+        app:layout_constraintTop_toTopOf="@+id/progress_layout"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
