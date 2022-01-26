@@ -9,11 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProgressBar">
-        <activity
-            android:name=".MainActivity"
-          >
 
-        </activity>
         <activity android:name=".RoundCornerActivity"
             android:exported="true">
             <intent-filter>
