@@ -18,6 +18,7 @@ public class RoundCornerActivity extends AppCompatActivity implements View.OnCli
     private Handler mMainHandler = new Handler(Looper.getMainLooper());
     private ProgressThread mProgressThread;
     private ProgressView progress_view;
+    private HorizontalProgressBar progressBar;
 
 
     @Override
@@ -29,15 +30,36 @@ public class RoundCornerActivity extends AppCompatActivity implements View.OnCli
 
     private void initUI() {
         findViewById(R.id.pop_dialog_btn).setOnClickListener(this);
-        progress_view=findViewById(R.id.progress_view);
+        progress_view = findViewById(R.id.progress_view);
+        progressBar = findViewById(R.id.bar_progress);
+
+
+        progressBar.setDrawableIds(
+                new int[]{R.drawable.img_1,
+                        R.drawable.img_2,
+                        R.drawable.img_3,
+                        R.drawable.img_4,
+                        R.drawable.img_5,
+                        R.drawable.img_6,
+                        R.drawable.img_7,
+                        R.drawable.img_8,
+                        R.drawable.img_9,
+                        R.drawable.img_10}
+        );
+
+        progressBar.startAnimation();
+
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.pop_dialog_btn:
-                mProgressThread = new ProgressThread();
-                mProgressThread.start();
+//                mProgressThread = new ProgressThread();
+//                mProgressThread.start();
+
+                progressBar.startAnimation();
 
                 break;
         }
@@ -51,7 +73,7 @@ public class RoundCornerActivity extends AppCompatActivity implements View.OnCli
         public void run() {
             super.run();
             while (!isInterrupted()) {
-                progress ++;
+                progress++;
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException e) {

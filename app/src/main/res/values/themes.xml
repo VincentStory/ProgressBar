@@ -13,4 +13,15 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <declare-styleable name="HorizontalProgressBar">
+        <attr name="bg_color" format="color"/>
+        <attr name="start_color" format="color"/>
+        <attr name="end_color" format="color"/>
+        <attr name="is_point_center" format="boolean"/>
+        <attr name="bar_drawable" format="reference"/>
+        <attr name="anim_duration" format="integer"/>
+        <attr name="current_progress" format="integer"/>
+        <attr name="is_anim_frame" format="boolean"/>
+    </declare-styleable>
 </resources>
