@@ -7,15 +7,12 @@ import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import androidx.annotation.RequiresApi
 import kotlin.math.max
 
-/**
- * 作者：liuwanlin
- * 创建日期：2020/12/14
- */
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class HorizontalProgressBar @JvmOverloads constructor(
     context: Context,
@@ -66,7 +63,7 @@ class HorizontalProgressBar @JvmOverloads constructor(
         }
 
     // 条纹间隔宽度
-    var pathSpace = 25
+    var pathSpace = 45
         set(value) {
             field = value
             invalidate()
@@ -84,7 +81,7 @@ class HorizontalProgressBar @JvmOverloads constructor(
     private var drawableIds: IntArray? = null
     private var drawableList = arrayListOf<Drawable>()
     private var frameIndex = 0
-    private var isAnimFrame = true
+    private var isAnimFrame = false
 
     // 当前进度
     private var currentProgress = 0
@@ -93,7 +90,7 @@ class HorizontalProgressBar @JvmOverloads constructor(
     private var barDrawable = -1
 
     // 动画时间
-    private var animDuration = 60 * 1000L
+    private var animDuration = 120 * 1000L
 
     private val bgRectF = RectF()
 
@@ -198,7 +195,7 @@ class HorizontalProgressBar @JvmOverloads constructor(
                     }
                 }
                 duration = animDuration
-                interpolator = DecelerateInterpolator(3f)
+                interpolator = DecelerateInterpolator(4f)
             }
         }
 
@@ -287,9 +284,8 @@ class HorizontalProgressBar @JvmOverloads constructor(
 
         drawFontBar(canvas)
 
-        drawFrameBar(canvas)
+//        drawFrameBar(canvas)
 
-        drawCircleBar(canvas)
     }
 
     /**
@@ -318,6 +314,7 @@ class HorizontalProgressBar @JvmOverloads constructor(
                 // 画前景
                 canvas.drawPath(fontPath, fontPaint)
 
+                // 取共同的部分
                 tempPath.op(fontPath, path, Path.Op.INTERSECT)
                 // 画斜线
                 canvas.drawPath(tempPath, pathPaint)
@@ -403,45 +400,5 @@ class HorizontalProgressBar @JvmOverloads constructor(
             )
         }
     }
-
-    /**
-     * 画圆圈 或者静态图片
-     */
-    private fun drawCircleBar(canvas: Canvas) {
-        if (isAnimFrame) {
-            return
-        }
-
-        barRectF.left = if (isPointCenter) {
-            fontRectF.right - drawableWidth / 2f
-        } else {
-            max(fontRectF.right - drawableWidth, 0f)
-        }
-        barRectF.top = 0f
-        barRectF.right = if (isPointCenter) {
-            fontRectF.right + drawableWidth / 2f
-        } else {
-            max(fontRectF.right, drawableWidth)
-        }
-        barRectF.bottom = drawableHeight
-
-        drawable?.also {
-            it.bounds = Rect(
-                barRectF.left.toInt(),
-                barRectF.top.toInt(),
-                barRectF.right.toInt(),
-                barRectF.bottom.toInt()
-            )
-            it.draw(canvas)
-        } ?: kotlin.run {
-            canvas.drawCircle(
-                barRectF.centerX(),
-                barRectF.centerY(),
-                drawableWidth / 2f,
-                fontPaint
-            )
-        }
-    }
-
 
 }

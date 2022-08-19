@@ -16,8 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class RoundCornerActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Handler mMainHandler = new Handler(Looper.getMainLooper());
-    private ProgressThread mProgressThread;
-    private ProgressView progress_view;
     private HorizontalProgressBar progressBar;
 
 
@@ -29,25 +27,13 @@ public class RoundCornerActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void initUI() {
-        findViewById(R.id.pop_dialog_btn).setOnClickListener(this);
-        progress_view = findViewById(R.id.progress_view);
+        findViewById(R.id.btn_start).setOnClickListener(this);
+        findViewById(R.id.btn_pause).setOnClickListener(this);
+        findViewById(R.id.btn_resume).setOnClickListener(this);
+        findViewById(R.id.btn_cancel).setOnClickListener(this);
         progressBar = findViewById(R.id.bar_progress);
 
 
-        progressBar.setDrawableIds(
-                new int[]{R.drawable.img_1,
-                        R.drawable.img_2,
-                        R.drawable.img_3,
-                        R.drawable.img_4,
-                        R.drawable.img_5,
-                        R.drawable.img_6,
-                        R.drawable.img_7,
-                        R.drawable.img_8,
-                        R.drawable.img_9,
-                        R.drawable.img_10}
-        );
-
-        progressBar.startAnimation();
 
 
     }
@@ -55,13 +41,26 @@ public class RoundCornerActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.pop_dialog_btn:
-//                mProgressThread = new ProgressThread();
-//                mProgressThread.start();
+            case R.id.btn_start:
 
                 progressBar.startAnimation();
-
                 break;
+
+                case R.id.btn_pause:
+
+                progressBar.pauseAnimation();
+                break;
+
+                case R.id.btn_resume:
+
+                progressBar.resumeAnimation();
+                break;
+                case R.id.btn_cancel:
+
+                progressBar.cancelAnimation();
+                break;
+
+
         }
     }
 
@@ -88,7 +87,6 @@ public class RoundCornerActivity extends AppCompatActivity implements View.OnCli
                     @Override
                     public void run() {
 //                        mRoundCornerProgressDialog.updatePercent(p);
-                        progress_view.updatePercent(p);
                     }
                 });
             }
