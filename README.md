@@ -2,7 +2,7 @@
 ![效果图](https://github.com/VincentStory/ProgressBar/blob/main/app/vincent_progress.gif)
 
 用法：
-
+```
   <com.vincent.progressbar.HorizontalProgressBar
         android:id="@+id/bar_progress"
         android:layout_width="match_parent"
@@ -17,3 +17,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:start_color="#2855FF" />
+        
+        
+       ```
