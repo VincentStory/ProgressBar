@@ -16,9 +16,9 @@
         app:start_color="#2855FF" />
         
         
-       ```
+ ```
        
-       效果图：
+效果图：
        
 ![效果图](https://github.com/VincentStory/ProgressBar/blob/main/app/vincent_progress.gif)
 
