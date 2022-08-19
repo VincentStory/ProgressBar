@@ -1,6 +1,3 @@
-
-![效果图](https://github.com/VincentStory/ProgressBar/blob/main/app/vincent_progress.gif)
-
 用法：
 ```
   <com.vincent.progressbar.HorizontalProgressBar
@@ -20,3 +17,9 @@
         
         
        ```
+       
+       效果图：
+       
+![效果图](https://github.com/VincentStory/ProgressBar/blob/main/app/vincent_progress.gif)
+
+
